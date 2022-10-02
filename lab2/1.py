@@ -36,15 +36,16 @@ def quicksort(array, low, high):
     quicksort(array, pi + 1, high)
 
 
-fig = plt.figure()
-ax_random = fig.add_subplot()
+fig, axes = plt.subplots(3, 1)
+plt.tight_layout(pad=2.5)
 
-step = 500
 t_sel = Timer("selection(arr1)", globals=globals())
 t_quick = Timer("quicksort(arr2, 0, len(arr2) - 1)", globals=globals())
 
-plt_x, plt_s, plt_q = [], [], []
 
+# random list
+step = 200
+plt_x, plt_s, plt_q = [], [], []
 for i in range(step, step * 10 + 1, step):
     print(i)
     
@@ -54,20 +55,19 @@ for i in range(step, step * 10 + 1, step):
     plt_x.append(i)
     plt_s.append(t_sel.timeit(number=1))
     plt_q.append(t_quick.timeit(number=1))
-
 print(*plt_s, *plt_q, sep="\n")
 
-ax_random.set_title("random order")
-ax_random.set_xlabel("elements")
-ax_random.set_ylabel("time")
-ax_random.plot(plt_x, plt_s, label='selection')
-ax_random.plot(plt_x, plt_q, label='quick')
-ax_random.legend()
+axes[0].set_title("random order")
+axes[0].set_xlabel("elements")
+axes[0].set_ylabel("time")
+axes[0].plot(plt_x, plt_s, label='selection')
+axes[0].plot(plt_x, plt_q, label='quick')
+axes[0].legend()
 
 
-sys.setrecursionlimit(1500)
-step = 100
-ax_sorted = fig.add_subplot()
+# ordered list
+sys.setrecursionlimit(2500)
+step = 200
 plt_x, plt_s, plt_q = [], [], []
 for i in range(step, step * 10 + 1, step):
     print(i)
@@ -78,16 +78,36 @@ for i in range(step, step * 10 + 1, step):
     plt_x.append(i)
     plt_s.append(t_sel.timeit(number=1))
     plt_q.append(t_quick.timeit(number=1))
-
 print(*plt_s, *plt_q, sep="\n")
 
-ax_random.set_title("ordered")
-ax_sorted.set_xlabel("elements")
-ax_sorted.set_ylabel("time")
-ax_sorted.plot(plt_x, plt_s, label='selection')
-ax_sorted.plot(plt_x, plt_q, label='quick')
-ax_sorted.legend()
+axes[1].set_title("ordered")
+axes[1].set_xlabel("elements")
+axes[1].set_ylabel("time")
+axes[1].plot(plt_x, plt_s, label='selection')
+axes[1].plot(plt_x, plt_q, label='quick')
+axes[1].legend()
 
 
-plt.savefig("sorts.png")
+# reverse ordered list
+step = 200
+plt_x, plt_s, plt_q = [], [], []
+for i in range(step, step * 10 + 1, step):
+    print(i)
+    
+    arr1 = list(range(i, 0, -1))
+    arr2 = list(range(i, 0, -1))
 
+    plt_x.append(i)
+    plt_s.append(t_sel.timeit(number=1))
+    plt_q.append(t_quick.timeit(number=1))
+print(*plt_s, *plt_q, sep="\n")
+
+axes[2].set_title("reverse ordered")
+axes[2].set_xlabel("elements")
+axes[2].set_ylabel("time")
+axes[2].plot(plt_x, plt_s, label='selection')
+axes[2].plot(plt_x, plt_q, label='quick')
+axes[2].legend()
+
+
+plt.savefig("sorts.png", dpi=250)
