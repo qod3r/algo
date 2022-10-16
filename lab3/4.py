@@ -86,6 +86,8 @@ if __name__ == "__main__":
     plt.plot(plt_x, plt_q, label='queue')
     plt.plot(plt_x, plt_df, label='deque front')
     plt.plot(plt_x, plt_dr, label='deque rear')
+    plt.xlabel('elements')
+    plt.ylabel('time')
     plt.legend()
     plt.title('element addition')
     plt.savefig('structures_addition.png')

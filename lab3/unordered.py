@@ -33,6 +33,12 @@ class UnorderedList:
         return res
 
     def __getitem__(self, slice):
+        if isinstance(slice, int):
+            current = self.head
+            for _ in range(slice):
+                current = current.getNext()
+            return current.getData()
+        
         s = slice.start if slice.start is not None else 0
         l = (slice.stop - s) if slice.stop is not None else (self.size() - s)
         # print(f"s: {s}, l: {l}")
@@ -168,20 +174,25 @@ if __name__ == "__main__":
     mylist.add(54)
     mylist.append(123)
     mylist.append(256)
-
-    mylist.print()
-    print(mylist.pop())
-    print(mylist.pop())
-    mylist.print()
-    mylist.insert(2, 131313)
-    mylist.print()
-    mylist.insert(4, 222)
-    mylist.print()
     print(mylist)
+    print(mylist[2])
+    print(mylist[2:5])
 
-    print(mylist[:3])
-    print(mylist[1:5])
-    print(mylist[2:2])
+
+
+    # print(mylist)
+    # print(mylist.pop())
+    # print(mylist.pop())
+    # print(mylist)
+    # mylist.insert(2, 131313)
+    # print(mylist)
+    # mylist.insert(4, 222)
+    # print(mylist)
+    # print(mylist)
+
+    # print(mylist[:3])
+    # print(mylist[1:5])
+    # print(mylist[2:2])
 
     # print(mylist.index(26))
     # print(mylist.index(77))
