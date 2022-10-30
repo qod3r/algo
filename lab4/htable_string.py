@@ -6,7 +6,15 @@ class HashTable:
         self.size = 11
         self.slots = [None] * self.size
         self.data = [None] * self.size
+        
+    def hashfunction(self, key, size):
+        key = str(key)
+        sum = 0
+        for pos in range(len(key)):
+            sum += ord(key[pos])
 
+        return sum % size
+    
     def _next_prime(self):
         prime = self.size
         while prime <= self.size*2:
@@ -58,9 +66,6 @@ class HashTable:
                     self.data[nextslot] = data
                 else:
                     self.data[nextslot] = data  # replace
-
-    def hashfunction(self, key, size):
-        return key % size
 
     # linear
     # def rehash(self, oldhash, size):
@@ -129,11 +134,12 @@ class HashTable:
             print(f"λ: {len(self)/self.size:.3f}. Reducing...")
             self._change_size(self._prev_prime())
             print(f"New size: {self.size}")
-            
+
 
 if __name__ == "__main__":
     H = HashTable()
-    H[11] = 'a'
+    H['asd'] = 'a'
+    H['asd'] = 'bruh'
     H[22] = 'b'
     H[33] = 'c'
     H[44] = 'd'
@@ -145,28 +151,3 @@ if __name__ == "__main__":
     # H[88] = 'd'
     print(H.slots)
     print(H.data)
-    # del H[11]
-    # del H[22]
-    # del H[33]
-    # del H[44]
-    # print(H.slots)
-    # print(H.data)
-    # print(len(H))
-    # H[54] = "cat"
-    # H[26] = "dog"
-    # H[93] = "lion"
-    # H[17] = "tiger"
-    # H[77] = "bird"
-    # H[31] = "cow"
-    # H[44] = "goat"
-    # H[55] = "pig"
-    # H[20] = "chicken"
-    # print(H.slots)
-    # print(H.data)
-
-    # print(H[20])
-
-    # print(H[17])
-    # H[20] = 'duck'
-    # print(H[20])
-    # print(H[99])
