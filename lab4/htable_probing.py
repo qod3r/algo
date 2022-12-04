@@ -134,23 +134,23 @@ class HashTable:
 if __name__ == "__main__":
     H = HashTable()
     H[11] = 'a'
-    H[22] = 'b'
-    H[33] = 'c'
-    H[44] = 'd'
-    H[55] = 'd'
-    H[66] = 'd'
-    H[77] = 'd'
-    H[123] = 'sdsd'
-    H[124] = 'sdsd'
-    # H[88] = 'd'
+    H[12] = 'b'
+    H[13] = 'c'
+    H[14] = 'd'
     print(H.slots)
     print(H.data)
-    # del H[11]
-    # del H[22]
-    # del H[33]
+    del H[11]
+    del H[12]
+    print(H.slots)
+    print(H.data)
+    # del H[13]
+    # H[27] = 'e'
+    # H[28] = 'f'
+    # H[29] = 'g'
+    # H[30] = 'h'
+    # H[31] = 'i'
+    # H[32] = 'j'
     # del H[44]
-    # print(H.slots)
-    # print(H.data)
     # print(len(H))
     # H[54] = "cat"
     # H[26] = "dog"

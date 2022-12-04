@@ -10,3 +10,4 @@ for word in text:
     else:
         h[word] = h[word] + 1
     print(h[word], end=" ")
+print()

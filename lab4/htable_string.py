@@ -138,16 +138,17 @@ class HashTable:
 
 if __name__ == "__main__":
     H = HashTable()
-    H['asd'] = 'a'
-    H['asd'] = 'bruh'
-    H[22] = 'b'
-    H[33] = 'c'
-    H[44] = 'd'
-    H[55] = 'd'
-    H[66] = 'd'
-    H[77] = 'd'
-    H[123] = 'sdsd'
-    H[124] = 'sdsd'
-    # H[88] = 'd'
+    H['aa'] = 'a'
+    H['b'] = 'bruh'
     print(H.slots)
     print(H.data)
+    
+    # H[22] = 'b'
+    # H[33] = 'c'
+    # H[44] = 'd'
+    # H[55] = 'd'
+    # H[66] = 'd'
+    # H[77] = 'd'
+    # H[123] = 'sdsd'
+    # H[124] = 'sdsd'
+    # H[88] = 'd'

@@ -115,30 +115,30 @@ class HashTable:
 
 if __name__ == "__main__":
     H = HashTable()
-
     H[11] = 'a'
     H[22] = 'b'
     H[33] = 'c'
     H[44] = 'd'
-    # H[55] = 'e'
-    # H[77] = 'e'
-    # H[88] = 'e'
+    del H[11]
+    del H[33]
+    print(H.slots)
+    print(*H.data)
+    
+    # H[27] = 'e'
+    # H[28] = 'f'
+    # H[29] = 'g'
+    # H[30] = 'h'
+    # H[31] = 'i'
+    # H[32] = 'other'
     # print(len(H))
-    # H[99] = 'bruh'
-    # H[110] = 'bruh2'
-    # H[45] = 'tewnty two'
+    # print('a' in H)
+    # print('asdsdsdsd' in H)
     # print(len(H))
     # H[12] = 'asd'
     # H[13] = 'vv'
-    print(H.slots)
-    print(*H.data)
-    del H[11]
-    del H[33]
     
-    print(H.slots)
-    print(*H.data)
+    # print(H.slots)
+    # print(*H.data)
     # print(H[99])
     # print(len(H))
     # print()
-    # print('a' in H)
-    # print('asdsdsdsd' in H)
