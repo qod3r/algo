@@ -106,9 +106,29 @@ def evaluate(parseTree):
     else:
         return parseTree.getRootVal()
 
-# pt = buildParseTree("( ( 10 + 5 ) * 3 )")
-pt = buildParseTree("( ! ( True & False ) )")
-# pt = buildParseTree("( True & ! ( True & False ) )")
-print_tree(pt, nameattr='key', left_child='leftChild', right_child='rightChild')
+def printexp(tree):
+    leftC = tree.getLeftChild()
+    rightC = tree.getRightChild()
 
+    if leftC and not rightC:
+        # fn = opers[tree.getRootVal()]
+        printexp(leftC)
+        print(tree.getRootVal())
+    if leftC and rightC:
+        # fn = opers[tree.getRootVal()]
+        print("(", end=' ')
+        printexp(leftC)
+        print(tree.getRootVal(), end=' ')
+        printexp(rightC)
+        print(")", end=' ')
+    else:
+        print(tree.getRootVal(), end=' ')
+
+# pt = buildParseTree("( ( 10 + 5 ) * 3 )")
+# pt = buildParseTree("( ! ( True & False ) )")
+# print_tree(pt, nameattr='key', left_child='leftChild', right_child='rightChild')
+
+pt = buildParseTree("( True & ( True | False ) )")
 print(evaluate(pt))
+printexp(pt)
+
